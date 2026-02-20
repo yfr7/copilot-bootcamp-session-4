@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Animated background particles -->
+    <div class="bg-particles" aria-hidden="true">
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+    </div>
+
     <header>
       <div class="header-content">
         <img src="https://colby-timm.github.io/images/byte-teacher.png" alt="Byte mascot" class="mascot" />
@@ -14,20 +23,27 @@
           <h1>Slalom Capabilities Management</h1>
           <h2>Consulting Expertise Platform</h2>
         </div>
+        <img src="https://colby-timm.github.io/images/byte-happy.png" alt="Byte happy" class="mascot mascot-secondary" />
       </div>
     </header>
 
     <main>
       <section id="capabilities-container">
-        <h3>Available Capabilities</h3>
+        <h3>
+          <img src="https://colby-timm.github.io/images/byte-thinking.png" alt="Byte thinking" class="section-mascot" />
+          Available Capabilities
+        </h3>
         <div id="capabilities-list">
           <!-- Capabilities will be loaded here -->
-          <p>Loading capabilities...</p>
+          <p class="loading-text">Loading capabilities...</p>
         </div>
       </section>
 
       <section id="register-container">
-        <h3>Register Your Expertise</h3>
+        <h3>
+          <img src="https://colby-timm.github.io/images/byte-wave.png" alt="Byte waving" class="section-mascot" />
+          Register Your Expertise
+        </h3>
         <form id="register-form">
           <div class="form-group">
             <label for="email">Consultant Email:</label>
@@ -49,7 +65,8 @@
     <footer>
       <div class="footer-content">
         <img src="https://colby-timm.github.io/images/byte-celebrate.png" alt="Byte celebrating" class="footer-mascot" />
-        <p>&copy; 2025 Slalom • Building Better Tomorrow</p>
+        <p>&copy; 2025 Slalom &bull; Building Better Tomorrow</p>
+        <img src="https://colby-timm.github.io/images/byte-teacher.png" alt="Byte teacher" class="footer-mascot" />
       </div>
     </footer>
 

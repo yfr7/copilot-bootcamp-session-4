@@ -1,28 +1,77 @@
+/* =============================================
+   Slalom Brand Styles - Capabilities Platform
+   Brand Colors: #003d7a (primary), #0066cc (accent)
+   ============================================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
   line-height: 1.6;
   color: #333;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f5f5f5;
+  background-color: #f0f4f8;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Animated floating background particles */
+.bg-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(0, 61, 122, 0.08);
+  border-radius: 50%;
+  animation: floatParticle 15s infinite ease-in-out;
+}
+
+.particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 18s; }
+.particle:nth-child(2) { left: 30%; top: 60%; animation-delay: 3s; animation-duration: 14s; }
+.particle:nth-child(3) { left: 60%; top: 40%; animation-delay: 6s; animation-duration: 20s; }
+.particle:nth-child(4) { left: 80%; top: 70%; animation-delay: 2s; animation-duration: 16s; }
+.particle:nth-child(5) { left: 50%; top: 10%; animation-delay: 5s; animation-duration: 22s; }
+
+@keyframes floatParticle {
+  0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+  25% { transform: translateY(-40px) translateX(20px) scale(1.5); opacity: 0.6; }
+  50% { transform: translateY(-20px) translateX(-15px) scale(1.2); opacity: 0.4; }
+  75% { transform: translateY(-60px) translateX(10px) scale(1.8); opacity: 0.5; }
 }
 
 header {
   text-align: center;
-  padding: 20px 0;
+  padding: 25px 30px;
   margin-bottom: 30px;
-  background: linear-gradient(135deg, #003d7a, #0066cc);
+  background: linear-gradient(135deg, #003d7a 0%, #0066cc 60%, #1a7adb 100%);
   color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 61, 122, 0.3);
+  position: relative;
+  z-index: 1;
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .header-content {
@@ -38,17 +87,48 @@ header {
   height: 80px;
   border-radius: 50%;
   background: white;
-  padding: 10px;
+  padding: 8px;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  animation: gentleBounce 3s ease-in-out infinite;
+}
+
+.mascot:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.mascot-secondary {
+  animation-delay: 1.5s;
+}
+
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Section-level mascot icons */
+.section-mascot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  vertical-align: middle;
+  margin-right: 8px;
+  border: 2px solid #003d7a;
+  background: white;
+  padding: 2px;
 }
 
 .header-text h1 {
   margin-bottom: 5px;
   font-size: 2rem;
+  letter-spacing: 0.5px;
 }
 
 .header-text h2 {
   font-size: 1.2rem;
-  color: #e3f2fd;
+  color: #cce0f5;
+  font-weight: 300;
 }
 
 main {
@@ -56,6 +136,8 @@ main {
   flex-wrap: wrap;
   gap: 30px;
   justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 768px) {
@@ -66,11 +148,21 @@ main {
 
 section {
   background-color: white;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 61, 122, 0.08);
   width: 100%;
   max-width: 500px;
+  border-top: 3px solid #003d7a;
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+section:nth-child(1) { animation-delay: 0.2s; }
+section:nth-child(2) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 section h3 {
@@ -79,21 +171,25 @@ section h3 {
   border-bottom: 2px solid #003d7a;
   color: #003d7a;
   font-size: 1.4rem;
+  display: flex;
+  align-items: center;
 }
 
 .capability-card {
   margin-bottom: 20px;
   padding: 20px;
-  border: 2px solid #e3f2fd;
+  border: 1px solid #d0e3f5;
+  border-left: 4px solid #0066cc;
   border-radius: 10px;
-  background: linear-gradient(145deg, #ffffff, #f8f9fa);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: linear-gradient(145deg, #ffffff, #f8fbff);
+  box-shadow: 0 4px 6px rgba(0, 61, 122, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .capability-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 61, 122, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 61, 122, 0.12);
+  border-left-color: #003d7a;
 }
 
 .capability-card h4 {
@@ -102,6 +198,19 @@ section h3 {
   font-size: 1.3rem;
   border-bottom: 1px solid #e3f2fd;
   padding-bottom: 8px;
+}
+
+/* Loading animation */
+.loading-text {
+  text-align: center;
+  color: #0066cc;
+  font-style: italic;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 
 .capability-card p {
@@ -196,7 +305,7 @@ button[type="submit"] {
   background: linear-gradient(135deg, #003d7a, #0066cc);
   color: white;
   border: none;
-  padding: 12px 20px;
+  padding: 12px 24px;
   font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
@@ -243,10 +352,14 @@ button[type="submit"]:hover {
 footer {
   text-align: center;
   margin-top: 30px;
-  padding: 20px;
-  color: #666;
-  background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
-  border-radius: 10px;
+  padding: 25px 20px;
+  color: #003d7a;
+  background: linear-gradient(135deg, #e8f0fe, #d0e3f5);
+  border-radius: 12px;
+  border-bottom: 3px solid #003d7a;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.5s ease-out 0.6s both;
 }
 
 .footer-content {
@@ -257,32 +370,23 @@ footer {
   flex-wrap: wrap;
 }
 
+.footer-content p {
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
 .footer-mascot {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
+  border: 2px solid #003d7a;
+  background: white;
+  padding: 3px;
+  transition: transform 0.3s ease;
 }
 
-/* Header mascot styling */
-.header-text h1 {
-  margin-bottom: 5px;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.header-text h2 {
-  margin: 0;
-  font-size: 1.2rem;
-  opacity: 0.9;
-  font-weight: normal;
-}
-
-.mascot {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 3px solid white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+.footer-mascot:hover {
+  transform: scale(1.15) rotate(-5deg);
 }
 
 /* Responsive design improvements */
@@ -296,6 +400,10 @@ footer {
     width: 60px;
     height: 60px;
   }
+
+  .mascot-secondary {
+    display: none;
+  }
   
   .header-text h1 {
     font-size: 1.6rem;
@@ -304,4 +412,28 @@ footer {
   .header-text h2 {
     font-size: 1rem;
   }
+
+  .section-mascot {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Form focus styles for brand consistency */
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.15);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Smooth page transition */
+@keyframes pageLoad {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+body {
+  animation: pageLoad 0.4s ease-out;
 }
